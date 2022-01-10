@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AuthForm from '../components/AuthForm';
-import { signUpUser } from '../services/users';
+import { signInUser } from '../services/users';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -10,8 +10,8 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await signUpUser(email, password);
-      console.log(response);
+      await signInUser(email, password);
+      // console.log(response);
     } catch {
       setErrorMessage('Sign up failed, Try again.');
     }

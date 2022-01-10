@@ -1,6 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
-import SignIn from './Views/SignIn';
 import Auth from './Views/Auth';
 import { useState } from 'react';
 import { getUser, logout } from './services/users.js';

@@ -10,8 +10,7 @@ export default function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await signUpUser(email, password);
-      console.log(response);
+      await signUpUser(email, password);
     } catch {
       setErrorMessage('Sign in failed, Try again.');
     }
