@@ -1,5 +1,6 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
+import AuthForm from './components/AuthForm';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <p>home page</p>
+            <AuthForm />
           </Route>
           <Route path="/auth">
             <p> auth page</p>
