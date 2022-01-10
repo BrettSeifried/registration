@@ -1,19 +1,30 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
-import AuthForm from './components/AuthForm';
+import SignIn from './Views/SignIn';
+import Auth from './Views/Auth';
+import { useState } from 'react';
+import { getUser, logout } from './services/users.js';
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(getUser());
+  const logoutUser = async () => {
+    await logout();
+    setCurrentUser(null);
+  };
+
   return (
     <main className="container">
-      <h1> testing page </h1>
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
             <p>home page</p>
-            <AuthForm />
-          </Route>
-          <Route path="/auth">
-            <p> auth page</p>
+            {currentUser && (
+              <>
+                <h1> Signed in! Congrats Brettford, you did it!</h1>
+                <button onClick={logoutUser}>LogOut!</button>
+              </>
+            )}
+            {!currentUser && <Auth setCurrentUser={setCurrentUser} />}
           </Route>
         </Switch>
       </BrowserRouter>
